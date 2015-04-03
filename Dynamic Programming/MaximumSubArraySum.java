@@ -9,25 +9,39 @@ public class MaximumSubArraySum {
 				numbers.add(scanner.nextInt());
 			}
 			if(!numbers.isEmpty()){
-				System.out.println("An array have a sub-array with maximum sum of "+ getMaxSubarraySum(numbers));
+				printSubArrayWithMaxSum(numbers);
 			}
 		}
 	}
 
-	public static int getMaxSubarraySum(List<Integer> numbers){
+	public static void printSubArrayWithMaxSum(List<Integer> numbers){
+		int startIndex =0, endIndex=0;
 		int maxSum= 0, carryingSum= 0; 
-		for(int currentNumber : numbers){
+		for(int i = 0; i < numbers.size(); i++){
+			int currentNumber = numbers.get(i);
 
 			if((carryingSum + currentNumber) >= currentNumber){
 				carryingSum +=  currentNumber;
 			} else {
 				carryingSum = currentNumber;
+				startIndex = i;
 			}
 
 			if(carryingSum > maxSum){
 				maxSum = carryingSum;
+				endIndex = i;
 			}
 		}
-		return maxSum;
+		System.out.println("An array have sub-array "+ getSubArray(numbers, startIndex, endIndex)+ " with maximum sum " +  maxSum);
+	}
+
+	public static String getSubArray(List<Integer> numbers, int startIndex, int endIndex){
+		StringBuffer subArray = new StringBuffer();
+		subArray.append("[ ");
+		for(int i = startIndex; i <= endIndex; i++){
+			subArray.append(numbers.get(i) + " ");
+		}
+		subArray.append("]");
+		return subArray.toString();
 	}
 }
