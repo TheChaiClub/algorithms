@@ -32,7 +32,7 @@ public class MaximumSubArraySum {
 				endIndex = i;
 			}
 		}
-		System.out.println("An array have sub-array "+ getSubArray(numbers, startIndex, endIndex)+ " with maximum sum " +  maxSum);
+		System.out.println("An array have sub-array " + getSubArray(numbers, startIndex, endIndex) + " with maximum sum " +  maxSum);
 	}
 
 	public static String getSubArray(List<Integer> numbers, int startIndex, int endIndex){

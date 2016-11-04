@@ -15,19 +15,17 @@ public class PowOfTwo {
 	}
 
 	private static boolean isPowOfTwo(long n) {
-
-		boolean foundOne = false;
+		if(n <= 0){
+			return false;
+		}
+		int sum = 0;
 		while (n != 0) {
-			boolean lastBitOne = (n & 1) == 1;
-			if (lastBitOne) {
-				if (foundOne) {
-					return false;
-				}
-				foundOne = true;
+			sum += n & 1;
+			if (sum > 1) {
+				return false;
 			}
 			n = n >> 1;
-			System.out.println(n);
 		}
-		return foundOne;
+		return true;
 	}
 }
